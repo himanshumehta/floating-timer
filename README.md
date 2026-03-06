@@ -15,14 +15,24 @@ Always-on-top floating timer for macOS with stopwatch and countdown modes. Inspi
 
 ## Requirements
 
-- macOS 13.0+
-- Xcode 15+
+- **macOS 13.0 (Ventura)** or later
+- **Xcode 15+** with Command Line Tools installed
+
+> This is a native macOS app. It does not run on Windows or Linux.
+
+To install Xcode Command Line Tools (if not already installed):
+
+```bash
+xcode-select --install
+```
 
 ## How to Run
 
 ### Option 1: Build and run from Xcode
 
 ```bash
+git clone https://github.com/himanshumehta/floating-timer.git
+cd floating-timer
 open FloatingTimer.xcodeproj
 ```
 
@@ -31,29 +41,47 @@ Then press `Cmd + R` to build and run.
 ### Option 2: Build from command line
 
 ```bash
-# Clone the repo
 git clone https://github.com/himanshumehta/floating-timer.git
 cd floating-timer
 
-# Build
-xcodebuild -project FloatingTimer.xcodeproj -scheme FloatingTimer -configuration Release build
+# Build (output goes to ./build)
+xcodebuild -project FloatingTimer.xcodeproj \
+  -scheme FloatingTimer \
+  -configuration Release \
+  SYMROOT="$(pwd)/build" \
+  build
 
-# Run (the app will be in DerivedData)
-open ~/Library/Developer/Xcode/DerivedData/FloatingTimer-*/Build/Products/Release/FloatingTimer.app
+# Run
+open build/Release/FloatingTimer.app
 ```
 
 ### Option 3: Install to Applications
 
 ```bash
+git clone https://github.com/himanshumehta/floating-timer.git
+cd floating-timer
+
 # Build release
-xcodebuild -project FloatingTimer.xcodeproj -scheme FloatingTimer -configuration Release build
+xcodebuild -project FloatingTimer.xcodeproj \
+  -scheme FloatingTimer \
+  -configuration Release \
+  SYMROOT="$(pwd)/build" \
+  build
 
 # Copy to Applications
-cp -r ~/Library/Developer/Xcode/DerivedData/FloatingTimer-*/Build/Products/Release/FloatingTimer.app /Applications/
+cp -r build/Release/FloatingTimer.app /Applications/
 
 # Launch
 open /Applications/FloatingTimer.app
 ```
+
+## Code Signing
+
+The app is configured to sign with "Sign to Run Locally" (ad-hoc signing). This means:
+
+- It builds and runs on any Mac without an Apple Developer account
+- macOS Gatekeeper may show a warning on first launch — right-click the app and select **Open** to bypass it
+- If you want to distribute the app, you'll need to sign it with a valid Developer ID
 
 ## Usage
 
