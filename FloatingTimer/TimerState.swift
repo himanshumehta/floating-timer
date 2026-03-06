@@ -1,5 +1,6 @@
 import SwiftUI
 import Combine
+import AppKit
 
 enum TimerMode: String, CaseIterable {
     case stopwatch = "Stopwatch"
@@ -74,7 +75,7 @@ class TimerState: ObservableObject {
 
                 if self.isCountdownFinished {
                     self.pause()
-                    self.flashWindow()
+                    self.playCompletionSound()
                 }
             }
     }
@@ -107,7 +108,11 @@ class TimerState: ObservableObject {
         isEditing = false
     }
 
-    private func flashWindow() {
+    private func playCompletionSound() {
+        NSSound(named: "Purr")?.play()
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.8) {
+            NSSound(named: "Hero")?.play()
+        }
         NSApp.requestUserAttention(.criticalRequest)
     }
 }
