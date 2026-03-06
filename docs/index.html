@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Floating Timer</title>
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { font-family: -apple-system, BlinkMacSystemFont, sans-serif; background: #0a0a0a; color: #e0e0e0; min-height: 100vh; display: flex; flex-direction: column; align-items: center; padding: 60px 20px; }
+  .hero { text-align: center; max-width: 600px; }
+  .icon { width: 80px; height: 80px; background: linear-gradient(135deg, #2563eb, #1e40af); border-radius: 20px; display: flex; align-items: center; justify-content: center; font-size: 40px; margin: 0 auto 24px; }
+  h1 { font-size: 2.5rem; font-weight: 700; margin-bottom: 8px; }
+  .tagline { color: #888; font-size: 1.1rem; margin-bottom: 40px; }
+  .features { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; width: 100%; max-width: 600px; margin-bottom: 40px; }
+  .feature { background: #161616; border: 1px solid #222; border-radius: 12px; padding: 20px; }
+  .feature h3 { font-size: 0.95rem; margin-bottom: 4px; }
+  .feature p { color: #777; font-size: 0.85rem; }
+  .install { background: #161616; border: 1px solid #222; border-radius: 12px; padding: 24px; width: 100%; max-width: 600px; margin-bottom: 40px; }
+  .install h2 { font-size: 1.1rem; margin-bottom: 12px; }
+  code { background: #0d0d0d; border: 1px solid #333; border-radius: 8px; padding: 12px 16px; display: block; font-family: 'SF Mono', Menlo, monospace; font-size: 0.85rem; color: #4ade80; white-space: pre; overflow-x: auto; }
+  footer { color: #555; font-size: 0.8rem; margin-top: auto; padding-top: 40px; }
+  footer a { color: #888; }
+</style>
+</head>
+<body>
+  <div class="hero">
+    <div class="icon">&#9201;</div>
+    <h1>Floating Timer</h1>
+    <p class="tagline">Always-on-top timer for macOS. Stopwatch & countdown.</p>
+  </div>
+
+  <div class="features">
+    <div class="feature">
+      <h3>Always on Top</h3>
+      <p>Stays visible over all windows, even full-screen apps.</p>
+    </div>
+    <div class="feature">
+      <h3>Two Modes</h3>
+      <p>Stopwatch (count up) or countdown with presets.</p>
+    </div>
+    <div class="feature">
+      <h3>Click-Through</h3>
+      <p>Toggle so clicks pass through to windows below.</p>
+    </div>
+    <div class="feature">
+      <h3>Sound Alert</h3>
+      <p>Plays a sound and flashes when countdown ends.</p>
+    </div>
+  </div>
+
+  <div class="install">
+    <h2>Run it</h2>
+    <code>git clone https://github.com/himanshumehta/floating-timer.git
+cd floating-timer
+./run.sh</code>
+  </div>
+
+  <footer>
+    <a href="https://github.com/himanshumehta/floating-timer">GitHub</a> &middot; macOS 13+ &middot; MIT License
+  </footer>
+</body>
+</html>
